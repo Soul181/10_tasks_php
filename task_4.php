@@ -33,46 +33,63 @@
                     <div class="panel-container show">
                         <div class="panel-content">
 						<?php 
-						// разбиваю структуру на 4 дива
-						// ав
-                            $div_1 = "<div class=\"d-flex mt-2\">
-                                My Tasks
-                                <span class=\"d-inline-block ml-auto\">130 / 500</span>
-                            </div>
-                            <div class=\"progress progress-sm mb-3\">
-                                <div class=\"progress-bar bg-fusion-400\" role=\"progressbar\" style=\"width: 65%;\" aria-valuenow=\"65\" aria-valuemin=\"0\" aria-valuemax=\"100\"></div>
-                            </div>";
-							
-                            $div_2 = "<div class=\"d-flex\">
-                                Transfered
-                                <span class=\"d-inline-block ml-auto\">440 TB</span>
-                            </div>
-                            <div class=\"progress progress-sm mb-3\">
-                                <div class=\"progress-bar bg-success-500\" role=\"progressbar\" style=\"width: 34%;\" aria-valuenow=\"34\" aria-valuemin=\"0\" aria-valuemax=\"100\"></div>
-                            </div>";
-							
-                            $div_3 = "<div class=\"d-flex\">
-                                Bugs Squashed
-                                <span class=\"d-inline-block ml-auto\">77%</span>
-                            </div>
-                            <div class=\"progress progress-sm mb-3\">
-                                <div class=\"progress-bar bg-info-400\" role=\"progressbar\" style=\"width: 77%;\" aria-valuenow=\"77\" aria-valuemin=\"0\" aria-valuemax=\"100\"></div>
-                            </div>";
-							
-                            $div_4 = "<div class=\"d-flex\">
-                                User Testing
-                                <span class=\"d-inline-block ml-auto\">7 days</span>
-                            </div>
-                            <div class=\"progress progress-sm mb-g\">
-                                <div class=\"progress-bar bg-primary-300\" role=\"progressbar\" style=\"width: 84%;\" aria-valuenow=\"84\" aria-valuemin=\"0\" aria-valuemax=\"100\"></div>
-                            </div>";
-							
-							$arr = array("{$div_1}","{$div_2}","{$div_3}","{$div_4}");
-							foreach ($arr as $value){
-								echo $value;
-							}
-							
+							$markers = [
+								["div_name"      => "My Tasks",
+								 "span_name"     => "130 / 500",
+								 "div_class_name"=> "progress-sm mb-3",
+								 "progress-bar"  => "bg-fusion-400",
+								 "width_value"   => "65%",
+								 "aria-valuenow" => "65",
+								 "aria-valuemin" => "0",
+								 "aria-valuemax" => "100"
+								 ],
+								["div_name"      => "Transfered",
+								 "span_name"     => "440 TB",
+								 "div_class_name"=> "progress-sm mb-3",
+								 "progress-bar"  => "bg-success-500",
+								 "width_value"   => "34%",
+								 "aria-valuenow" => "34",
+								 "aria-valuemin" => "0",
+								 "aria-valuemax" => "100"
+								 ],
+								["div_name"      => "Bugs Squashed",
+								 "span_name"     => "77%",
+								 "div_class_name"=> "progress-sm mb-3",
+								 "progress-bar"  => "bg-info-400",
+								 "width_value"   => "77%",
+								 "aria-valuenow" => "77",
+								 "aria-valuemin" => "0",
+								 "aria-valuemax" => "100"
+								 ],
+								["div_name"      => "User Testing",
+								 "span_name"     => "7 days",
+								 "div_class_name"=> "progress-sm mb-g",
+								 "progress-bar"  => "bg-primary-300",
+								 "width_value"   => "84%",
+								 "aria-valuenow" => "84",
+								 "aria-valuemin" => "0",
+								 "aria-valuemax" => "100"
+								 ]								 
+							];
 						?>
+						<?php foreach ($markers as $marker):?>
+							<div class="d-flex mt-2">
+                                <?php echo $marker["div_name"];?>
+                                <span class="d-inline-block ml-auto"><?php echo $marker["span_name"];?></span>
+                            </div>
+                            <div class="progress <?php echo $marker["div_class_name"];?>">
+                                <div 
+								class="progress-bar <?php echo $marker["progress-bar"];?>" 
+								role="progressbar" 	
+								style="width: <?php echo $marker["width_value"];?>;" 
+								aria-valuenow="<?php echo $marker["aria-valuenow"];?>" 
+								aria-valuemin="<?php echo $marker["aria-valuemin"];?>" 
+								aria-valuemax="<?php echo $marker["aria-valuemax"];?>">
+								</div>
+                            </div>
+						<?php endforeach;?>
+						
+                            </div>
                         </div>
                     </div>
                 </div>
