@@ -43,23 +43,20 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <ul id="js-list-msg" class="list-group px-2 pb-2 js-list-filter">   
-										<?php
-										// замена html кода на php код
-										$arr = array(
-										"reports file"     => "Reports",
-										"analytics graphs" => "Analytics",
-										"export download"  => "Export",
-										"storage"          => "Storage",
-										);
-										foreach ($arr as $key => $value) {
-											echo "<li class=\"list-group-item\">";
-											echo "<span data-filter-tags=\"{$key}\">{$value}</span>";
-											echo "</li>";
-										//или в одну строку, или в три строки
-											//echo "<li class=\"list-group-item\"><span data-filter-tags=\"{$key}\">{$value}</span></li>";
-											}
-										?>					
+                                    <ul id="js-list-msg" class="list-group px-2 pb-2 js-list-filter">
+                                        <?php
+											$mass = ["reports file"     => "Reports",
+													 "analytics graphs" => "Analytics",
+													 "export download"  => "Export",
+													 "storage"          => "Storage"
+													];
+										 ?>
+										<?php foreach ($mass as $key => $value):?>
+										<li class="list-group-item">
+                                            <span data-filter-tags="<?php echo $key;?>"><?php echo $value;?></span>
+                                        </li>
+                                        <?php endforeach;?>
+										
                                     </ul>
                                     <div class="filter-message js-filter-message mt-0 fs-sm"></div>
                                 </div>
