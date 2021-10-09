@@ -31,41 +31,51 @@
                         </div>
                     </div>
                     <div class="panel-container show">
+							<?php
+							$title_1 = "Privacy"; 
+							$str_1 = "Your privacy is important to us at SmartAdmin and the protection, 
+								confidentiality and integrity of your personal data are our prime concerns.
+                                We will only use your personal information to administer your account, 
+								provide the products and services you have requested from us, and to keep you 
+								informed about our products and services (if you have consented to this).
+                                We only use your data for the purposes for which it was collected and, where relevant, 
+								to meet local legal obligations.
+                                We will retain your personal information only for as long as is necessary for the 
+								purposes for which the information was collected, or as long as is required pursuant to law.";
+							$title_2 = "Cookies and other similar technologies";
+							$str_2 = "We collect certain data through cookies and similar technologies (e.g. web beacons, 
+								tags, device identifiers). Cookies are text files placed on your computer to collect standard 
+								internet log information and visitor behaviour information. This information is used to track 
+								visitor use of the website and to compile statistical reports on website activity. We register 
+								your interaction with our services in order to improve our website, content and services. 
+								Our use of such technologies and the data collected is described in more detail in our Cookie Policy. 
+								You can manage your cookie preferences through your browser settings.";
+								
+							$markers = [
+									["title" => "{$title_1}",
+									 "str" => "{$str_1}",
+									 "h" => "h2",
+									 "class" => " class=\"mb-g\"",
+									],
+									["title" => "{$title_2}",
+									 "str" => "{$str_2}",
+									 "h" => "h3",
+									 "class" => ""
+									]
+									];
+							?>
+					
                         <div class="panel-content">
                             <div class="fs-lg fw-300 p-5 bg-white border-faded rounded mb-g">
-							<?php 
-							// ищем зависимость вывода данных
-							// для вывода имеем структуру <тег класс> строка </тег>
-							// соответственно формируем элементы будущего массива
-							$tag_1 = "h2";
-							$tag_2 = "p";
-							$tag_3 = "h3";
-							$tag_4 = "p";
 							
-							$class_1 = "";
-							$class_2 = " class=\"mb-g\"";
-							$class_3 = "";
-							$class_4 = "";
-							
-							$str_1 = "Privacy"; 
-							$str_2 = "Your privacy is important to us at SmartAdmin and the protection, confidentiality and integrity of your personal data are our prime concerns.
-                                We will only use your personal information to administer your account, provide the products and services you have requested from us, and to keep you informed about our products and services (if you have consented to this).
-                                We only use your data for the purposes for which it was collected and, where relevant, to meet local legal obligations.
-                                We will retain your personal information only for as long as is necessary for the purposes for which the information was collected, or as long as is required pursuant to law.";
-							$str_3 = "Cookies and other similar technologies";
-							$str_4 = "We collect certain data through cookies and similar technologies (e.g. web beacons, tags, device identifiers). Cookies are text files placed on your computer to collect standard internet log information and visitor behaviour information. This information is used to track visitor use of the website and to compile statistical reports on website activity. We register your interaction with our services in order to improve our website, content and services. Our use of such technologies and the data collected is described in more detail in our Cookie Policy. You can manage your cookie preferences through your browser settings.";
-							// заполняем массив исходя из расположения элементов
-							$arr = array("<{$tag_1}{$class_1}>{$str_1}</{$tag_1}>",
-										 "<{$tag_2}{$class_2}>{$str_2}</{$tag_2}>",
-										 "<{$tag_3}{$class_3}>{$str_3}</{$tag_3}>",
-										 "<{$tag_4}{$class_4}>{$str_4}</{$tag_4}>",
-							);
-							foreach ($arr as $value){
-								echo $value;
-							}
-							?>
-						
-                        </div>
+								<?php foreach ($markers as $marker):?>
+									<?php echo "<".$marker["h"].">";?><?php echo $marker["title"];?><?php echo "</".$marker["h"].">";?>
+									<p <?php echo $marker["class"];?>>
+										<?php echo $marker["str"];?>
+									</p>
+								<?php endforeach;?>
+								
+							</div>
                         </div>
                     </div>
                 </div>
