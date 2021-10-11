@@ -34,32 +34,30 @@
                         <div class="panel-content">
                             <ol class="breadcrumb page-breadcrumb">
 							
-							<?php
-							// ищем зависимость вывода данных
-							// для вывода имеем структуру <тег_1 класс_1> <тег_2 ссылка> строка </тег_2> </тег_1>
-							// соответственно формируем элементы будущего массива
-							$tag_li = "li";
-							$tag_a = "a";
-							$href = " href=\"#\"";
-							//$class_1 = "";
-							//$class_2 = "";
-							
-							$class_1 = " class=\"breadcrumb-item\"";
-							$class_2 = " class=\"breadcrumb-item active\"";
-							
-							$str_1 = "Главная";
-							$str_2 = "PHP";
-							$str_3 = "Функции";
-							// заполняем массив исходя из расположения элементов
-							$arr = array("<{$tag_li}{$class_1}><{$tag_a}{$href}>{$str_1}</{$tag_a}></{$tag_li}>",
-										 "<{$tag_li}{$class_1}><{$tag_a}{$href}>{$str_2}</{$tag_a}></{$tag_li}>",
-										 "<{$tag_li}{$class_2}>{$str_3}</{$tag_li}>",
-							);
-							foreach ($arr as $value){
-								echo $value;
-							}
+							<?php 
+							$markers = [
+									["link"  => "true",
+									 "href"  => "https://university.marlindev.ru/",
+									 "title" => "Главная"
+									],
+									["link"  => "true",
+									 "href"  => "https://www.php.net/",
+									 "title" => "PHP"
+									],
+									["link"  => "false",
+									 "href"  => "",
+									 "title" => "Функции"
+									]
+									];
 							
 							?>
+								<?php foreach ($markers as $marker):?>
+									<?php if ($marker["link"]):?> 
+									<li class="breadcrumb-item"><a href="<?php echo $marker["href"];?>"><?php echo $marker["title"];?></a></li>
+									<?php else:?>
+									<li class="breadcrumb-item active"><?php echo $marker["title"];?></li>
+									<?php endif;?>
+								<?php endforeach;?>
                             </ol>
                         </div>
                     </div>
