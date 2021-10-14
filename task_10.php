@@ -1,3 +1,5 @@
+<?php session_start();?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -34,8 +36,7 @@
                         <div class="panel-content">
                             <div class="panel-content">
                                 <div class="form-group">
-                                    <div class="alert alert-danger fade show" role="alert">
-									<?php 
+                                    <?php 
 										$db_data = ["servername" => "localhost",
 													"username" => "root",
 													"password" => "root",
@@ -52,11 +53,19 @@
 											$sql = "INSERT INTO `task_9`(`text`) VALUES ($data)";// Запрос в БД, Добавляем запись в БД
 											$res = mysqli_query($conn, $sql); // отправляем команду в БД на запись
 											} else {
-												echo "You should check in on some of those fields below.";
+												$_SESSION["massage"] = "You should check in on some of those fields below.";
 											} 
 										}
 									?>
-                                    </div>
+									
+									
+										<?php if (isset($_SESSION["massage"])):?> 
+										<div class="alert alert-danger fade show" role="alert">
+											<?php echo $_SESSION["massage"];
+											unset($_SESSION["massage"]); ?>
+										</div>
+										<?php endif;?>
+                                   
                                     <form action="" method="POST">
                                         <label class="form-label" for="simpleinput">Text</label>
                                         <input type="text" id="simpleinput" name="form" class="form-control">
